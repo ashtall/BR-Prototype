@@ -55,6 +55,7 @@ main.o: D:/butano/games/BR-Prototype/src/main.cpp \
  D:/butano/butano/include/bn_optional_fwd.h \
  D:/butano/butano/include/bn_optional.h \
  D:/butano/butano/include/bn_date.h \
+ D:/butano/games/BR-Prototype/include/br_game.h \
  D:/butano/games/BR-Prototype/include/common_variable_8x16_sprite_font.h \
  D:/butano/butano/include/bn_sprite_font.h \
  D:/butano/butano/include/bn_utf8_characters_map.h \
@@ -118,6 +119,7 @@ D:/butano/butano/include/bn_time.h:
 D:/butano/butano/include/bn_optional_fwd.h:
 D:/butano/butano/include/bn_optional.h:
 D:/butano/butano/include/bn_date.h:
+D:/butano/games/BR-Prototype/include/br_game.h:
 D:/butano/games/BR-Prototype/include/common_variable_8x16_sprite_font.h:
 D:/butano/butano/include/bn_sprite_font.h:
 D:/butano/butano/include/bn_utf8_characters_map.h:
