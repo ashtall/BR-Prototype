@@ -10,13 +10,9 @@
 #include "bn_date.h"
 
 #include "br_game.h"
+#include "br_globals.h"
 
 #include "common_variable_8x16_sprite_font.h"
-
-
-int playerHP = 3;
-int dealerHP = playerHP;
-
 
 int main()
 {

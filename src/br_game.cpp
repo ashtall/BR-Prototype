@@ -5,6 +5,9 @@
 #include "bn_optional.h"
 #include "bn_log.h"
 #include "bn_keypad.h"
+#include "br_globals.h"
+
+int curBullet = 0;
 
 void displayInfo()
 {
@@ -15,16 +18,15 @@ void game(bn::sprite_text_generator &text_generator)
 {
     text_generator.set_center_alignment();
 
-    bn::seed_random rand;
     bn::optional<bn::time> time = bn::time::current();
     int seed = time->hour() * 10000 + time->minute() * 100 + time->second();
-    BN_LOG("SEED: ",seed);
-    rand.set_seed(seed);
+    BN_LOG("SEED: ", seed);
+    rrand.set_seed(seed);
 
-    int noOfBullets = rand.get_unbiased_int(2, 9);
+    noOfBullets = rrand.get_unbiased_int(2, 9);
     int lowlimit = noOfBullets > 4 ? 2 : 1;
     int uplimit = noOfBullets > 4 ? noOfBullets - 1 : noOfBullets;
-    int noOfLiveBullets = rand.get_unbiased_int(lowlimit, uplimit);
+    int noOfLiveBullets = rrand.get_unbiased_int(lowlimit, uplimit);
     bool *bullets = new bool[noOfBullets];
 
     for (int i = 0; i < noOfLiveBullets; i++)
@@ -35,7 +37,7 @@ void game(bn::sprite_text_generator &text_generator)
     // shuffle bullet array
     for (int i = 0; i < noOfBullets; i++)
     {
-        int j = rand.get_unbiased_int(3);
+        int j = rrand.get_unbiased_int(3);
         bool temp = bullets[i];
         bullets[i] = bullets[j];
         bullets[j] = temp;
@@ -49,8 +51,10 @@ void game(bn::sprite_text_generator &text_generator)
     BN_LOG(noOfLiveBullets, noOfBullets);
 
     bool gameOver = false;
-    int curBullet = 0;
+    curBullet = 0;
     bool canInput = true;
+    playerHP = 3;
+    dealerHP = playerHP;
     while (!gameOver && canInput)
     {
         // Shoot Dealer

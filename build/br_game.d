@@ -49,7 +49,8 @@ br_game.o: D:/butano/games/BR-Prototype/src/br_game.cpp \
  D:/butano/butano/include/bn_optional.h D:/butano/butano/include/bn_log.h \
  D:/butano/butano/include/bn_config_log.h \
  D:/butano/butano/include/bn_log_backend.h \
- D:/butano/butano/include/bn_keypad.h
+ D:/butano/butano/include/bn_keypad.h \
+ D:/butano/games/BR-Prototype/include/br_globals.h
 D:/butano/butano/include/bn_seed_random.h:
 D:/butano/butano/include/bn_fixed.h:
 D:/butano/butano/include/bn_compare.h:
@@ -104,3 +105,4 @@ D:/butano/butano/include/bn_log.h:
 D:/butano/butano/include/bn_config_log.h:
 D:/butano/butano/include/bn_log_backend.h:
 D:/butano/butano/include/bn_keypad.h:
+D:/butano/games/BR-Prototype/include/br_globals.h:

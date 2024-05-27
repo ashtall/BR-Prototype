@@ -24,10 +24,8 @@ main.o: D:/butano/games/BR-Prototype/src/main.cpp \
  D:/butano/butano/include/bn_memory_alias.h \
  D:/butano/butano/include/bn_string_view.h \
  D:/butano/butano/include/bn_vblank_callback_type.h \
- D:/butano/butano/include/bn_random.h \
- D:/butano/butano/include/bn_limits.h \
  D:/butano/butano/include/bn_seed_random.h \
- D:/butano/butano/include/bn_log.h \
+ D:/butano/butano/include/bn_limits.h D:/butano/butano/include/bn_log.h \
  D:/butano/butano/include/bn_config_log.h \
  D:/butano/butano/include/bn_log_backend.h \
  D:/butano/butano/include/bn_keypad.h \
@@ -56,6 +54,7 @@ main.o: D:/butano/games/BR-Prototype/src/main.cpp \
  D:/butano/butano/include/bn_optional.h \
  D:/butano/butano/include/bn_date.h \
  D:/butano/games/BR-Prototype/include/br_game.h \
+ D:/butano/games/BR-Prototype/include/br_globals.h \
  D:/butano/games/BR-Prototype/include/common_variable_8x16_sprite_font.h \
  D:/butano/butano/include/bn_sprite_font.h \
  D:/butano/butano/include/bn_utf8_characters_map.h \
@@ -88,9 +87,8 @@ D:/butano/butano/include/bn_optional.h:
 D:/butano/butano/include/bn_memory_alias.h:
 D:/butano/butano/include/bn_string_view.h:
 D:/butano/butano/include/bn_vblank_callback_type.h:
-D:/butano/butano/include/bn_random.h:
-D:/butano/butano/include/bn_limits.h:
 D:/butano/butano/include/bn_seed_random.h:
+D:/butano/butano/include/bn_limits.h:
 D:/butano/butano/include/bn_log.h:
 D:/butano/butano/include/bn_config_log.h:
 D:/butano/butano/include/bn_log_backend.h:
@@ -120,6 +118,7 @@ D:/butano/butano/include/bn_optional_fwd.h:
 D:/butano/butano/include/bn_optional.h:
 D:/butano/butano/include/bn_date.h:
 D:/butano/games/BR-Prototype/include/br_game.h:
+D:/butano/games/BR-Prototype/include/br_globals.h:
 D:/butano/games/BR-Prototype/include/common_variable_8x16_sprite_font.h:
 D:/butano/butano/include/bn_sprite_font.h:
 D:/butano/butano/include/bn_utf8_characters_map.h:
