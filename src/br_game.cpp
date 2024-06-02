@@ -26,7 +26,8 @@ void dealerPlays()
         return;
     }
 
-    bn::fixed liveChance = bn::fixed(noOfLiveBullets) / noOfBullets - curBullet;
+    bn::fixed liveChance = bn::fixed(noOfLiveBullets) / (noOfBullets - curBullet);
+    BN_LOG(noOfLiveBullets, " / (", noOfBullets," - ", curBullet, ") = ", liveChance);
     bool dealersTurn = false;
     if (liveChance >= 0.5)
     {
@@ -35,6 +36,7 @@ void dealerPlays()
             // shoot self
             if(bullets[curBullet]){
                 dealerHP--;
+                noOfLiveBullets--;
                 BN_LOG("Dealer shot itself and hit (luck)");
             }else{
                 BN_LOG("Dealer shot itself and missed (luck)");
@@ -45,6 +47,7 @@ void dealerPlays()
             // shoot player
             if(bullets[curBullet]){
                 playerHP--;
+                noOfLiveBullets--;
                 BN_LOG("Dealer shot player and hit");
             }else{
                 BN_LOG("Dealer shot player and missed");
@@ -58,6 +61,7 @@ void dealerPlays()
         // shoot self
         if(bullets[curBullet]){
             dealerHP--;
+            noOfLiveBullets--;
             BN_LOG("Dealer shot itself and hit");
         }
         else
@@ -125,6 +129,7 @@ void game(bn::sprite_text_generator &text_generator)
             if (bullets[curBullet])
             {
                 dealerHP--;
+                noOfLiveBullets--;
                 BN_LOG("Player shot dealer and hit");
                 // dealer plays
                 dealersTurn = true;
@@ -145,6 +150,7 @@ void game(bn::sprite_text_generator &text_generator)
             if (bullets[curBullet])
             {
                 playerHP--;
+                noOfLiveBullets--;
                 BN_LOG("Player shot itself and hit");
                 // dealer plays
                 dealersTurn = true;
