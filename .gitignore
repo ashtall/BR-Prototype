@@ -1,2 +1,5 @@
 .vscode
 build
+*.gba
+*.elf
+*.sav

@@ -12,7 +12,7 @@
 #include "bn_sprite_items_test_dealer.h"
 
 int curBullet = 0;
-bool* bullets = nullptr;
+bool *bullets = nullptr;
 int noOfLiveBullets;
 
 void displayInfo()
@@ -22,44 +22,52 @@ void displayInfo()
 
 void dealerPlays()
 {
-    if(noOfBullets-curBullet == 0){
+    if (noOfBullets - curBullet == 0)
+    {
         return;
     }
 
     bn::fixed liveChance = bn::fixed(noOfLiveBullets) / (noOfBullets - curBullet);
-    BN_LOG(noOfLiveBullets, " / (", noOfBullets," - ", curBullet, ") = ", liveChance);
+    BN_LOG(noOfLiveBullets, " / (", noOfBullets, " - ", curBullet, ") = ", liveChance);
     bool dealersTurn = false;
     if (liveChance >= 0.5)
     {
-        if(rrand.get_unbiased_int(10) == 0)
+        if (rrand.get_unbiased_int(10) == 0)
         {
             // shoot self
-            if(bullets[curBullet]){
+            if (bullets[curBullet])
+            {
                 dealerHP--;
                 noOfLiveBullets--;
                 BN_LOG("Dealer shot itself and hit (luck)");
-            }else{
+            }
+            else
+            {
                 BN_LOG("Dealer shot itself and missed (luck)");
             }
         }
         else
         {
             // shoot player
-            if(bullets[curBullet]){
+            if (bullets[curBullet])
+            {
                 playerHP--;
                 noOfLiveBullets--;
                 BN_LOG("Dealer shot player and hit");
-            }else{
+            }
+            else
+            {
                 BN_LOG("Dealer shot player and missed");
             }
         }
         curBullet++;
         displayInfo();
     }
-    else    
+    else
     {
         // shoot self
-        if(bullets[curBullet]){
+        if (bullets[curBullet])
+        {
             dealerHP--;
             noOfLiveBullets--;
             BN_LOG("Dealer shot itself and hit");
@@ -73,12 +81,14 @@ void dealerPlays()
         displayInfo();
     }
 
-    if(dealersTurn){
+    if (dealersTurn)
+    {
         dealerPlays();
     }
 }
 
-void resetChamber(){
+void resetChamber()
+{
     curBullet = 0;
     noOfBullets = rrand.get_unbiased_int(2, 9);
     int lowlimit = noOfBullets > 4 ? 2 : 1;
@@ -114,13 +124,14 @@ void game(bn::sprite_text_generator &text_generator)
 
     resetChamber();
 
+    bn::sprite_ptr dealer = bn::sprite_items::test_dealer.create_sprite(0, -30);
     bool gameOver = false;
     bool canInput = true;
+    bool dealersTurn = false;
+    int dealer_sin = 0;
     playerHP = 3;
     dealerHP = playerHP;
-    bn::sprite_ptr dealer = bn::sprite_items::test_dealer.create_sprite(0,-30);
-    int dealer_sin = 0;
-    bool dealersTurn = false;
+    
     while (!gameOver && canInput)
     {
         // Shoot Dealer
@@ -154,7 +165,8 @@ void game(bn::sprite_text_generator &text_generator)
                 BN_LOG("Player shot itself and hit");
                 // dealer plays
                 dealersTurn = true;
-            }else 
+            }
+            else
             {
                 BN_LOG("Player shot itself and missed");
             }
@@ -162,12 +174,14 @@ void game(bn::sprite_text_generator &text_generator)
             displayInfo();
         }
 
-        if(dealersTurn){
+        if (dealersTurn)
+        {
             dealersTurn = false;
             dealerPlays();
         }
 
-        if(curBullet == noOfBullets){
+        if (curBullet == noOfBullets)
+        {
             resetChamber();
         }
 
@@ -177,10 +191,10 @@ void game(bn::sprite_text_generator &text_generator)
             displayInfo();
             BN_LOG("GAME OVER");
         }
-        
+
         bn::fixed yPos = bn::degrees_sin(dealer_sin) * 5;
-        dealer.set_position(bn::fixed_point(0,-30) +bn::fixed_point(0,yPos));
-        dealer_sin+=3;
+        dealer.set_position(bn::fixed_point(0, -30) + bn::fixed_point(0, yPos));
+        dealer_sin += 3;
         bn::core::update();
     }
 }
